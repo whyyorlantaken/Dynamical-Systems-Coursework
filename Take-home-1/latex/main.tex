@@ -1,0 +1,133 @@
+% !TEX root = main.tex
+\input{preamble}
+\input{format}
+\input{commands}
+
+\begin{document}
+
+\textsf{\LARGE{\textbf{Take-home exam 1}}}
+
+\normalsize{\textit{Dynamical Systems}}
+
+\vspace{1ex}
+
+\textsf{\textbf{Student:}} \text{Males-Araujo Yorlan}, 
+\href{mailto:yorlan.males@yachaytech.edu.ec}{\texttt{yorlan.males@yachaytech.edu.ec}}\\
+\textsf{\textbf{Lecturer:}} \text{Mario Cosenza}, 
+\href{mcosenza@yachaytech.edu.ec}{\texttt{mcosenza@yachaytech.edu.ec}}
+
+\vspace{2ex}
+
+\begin{problem}{Classification of fixed points}{problem-label}
+A particle of mass $m = 1$ is moving in the potential $V(x) = - (1/2)x^2 + (1/4)x^4$.
+Find and classify the fixed points (node, saddle, focus) according to their stability.
+\end{problem}
+
+Solution goes here.
+
+\begin{problem}{Hopf bifurcation}{problem-label-2}
+Consider the system $\ddot{x} + \lambda(x^2 - 1)\dot{x} + x - a = 0$.
+Find the curves on the space of parameters $(\lambda, a)$ where a Hopf bifurcation occurs.
+\end{problem}
+
+The second solution goes here.
+
+\begin{problem}{Fractal dimension}{problem-label-3}
+Calculate the fractal dimension of the following object
+shown at three successive levels of construction.
+
+\begin{center}
+    \includegraphics[scale=0.5]{images/cube_fractal.jpg}
+\end{center}
+\end{problem}
+
+Solution goes here.
+
+\begin{problem}{Sensitivity and analytical solution}{problem-label-4}
+
+    Consider the map $x_{n+1} = f(x_n) = (2x_n - 1)^3$ , for $x_n \in [-1, 1]$.
+
+    \begin{enumerate}[(a)]
+        \item Show, by iterating two close initial conditions, that this map is chaotic.
+        \item Show that $x_n = \cos^3 (2^n \cos^{-1} (x_0))$ is a solution $\forall n$.
+    \end{enumerate}
+
+\end{problem}
+
+Solution goes here.
+
+\begin{problem}{Bifurcation diagram and Lyapunov exponent}{problem-label-5}
+    Consider the map $x_{n+1} = f(x_n) = \sin^2(r\,\arcsin{\sqrt{x_n}})$, for $x_n \in [0, 1]$.
+
+    \begin{enumerate}[(a)]
+        \item Obtain the bifurcation diagram of $x_n$ as a function of $r$,
+        for $r \in [1, 4]$.
+        \item Calculate the Lyapunov exponent as a function of $r$, for $r \in [1, 4]$.
+    \end{enumerate}
+
+\end{problem}
+
+Solution goes here.
+
+\begin{problem}{Phase space}{problem-label-6}
+
+    The evolution of a system is described by the following equation:
+    \[
+        \ddot{x} + a\ddot{x}+\dot{x}-|x|+1=0, \text{ for } a > 0.
+    \]
+
+    \begin{enumerate}[(a)]
+        \item Find the fixed points of this system.
+        \item Plot the attractor of this system in its phase space for $a = 0.6$.
+        Is it strange?
+        \item Show that this system is not chaotic for $a = 0.68$.
+    \end{enumerate}
+
+\end{problem}
+
+Solution goes here.
+
+% Now, let's see how to use the \texttt{problem} environment. 
+% The \texttt{problem} environment is defined in the \texttt{format.tex} file. 
+% You can define your own environments following 
+% the \texttt{problem} environment.
+
+% What do you think about this? I think it's a great 
+% way to work with problems. You can also use 
+% the \texttt{problem} environment to write your own problems. 
+% For instance, you can write your own problems 
+% in the \texttt{problem} environment and then use 
+% the \texttt{problem} environment to write your own solutions.
+
+
+% Take this cool equation for example:
+% \begin{equation}
+%     \label{eq:example}
+%     \begin{aligned}
+%         \im \hbar \pdv{\psi}{t} &= -\dfrac{\hbar^2}{2m} \nabla^2 \psi + V(x) \psi,
+%     \end{aligned}
+% \end{equation}
+
+% where $\psi$ is the wave function, $V(x)$ is the potential energy, 
+% and $m$ is the mass of the particle. 
+% The equation describes how the wave function evolves over time.
+% The \texttt{problem} environment is defined in the \texttt{format.tex} file. 
+% You can define your own environments following 
+% the \texttt{problem} environment.
+
+\vspace{5ex}
+\hrule
+\vspace{1ex}
+
+\vspace{0.1ex}
+
+% =================================================
+
+% \newpage
+
+% \vfill
+
+% \bibliographystyle{apalike}
+% \bibliography{references}
+
+\end{document}
