@@ -23,7 +23,88 @@ A particle of mass $m = 1$ is moving in the potential $V(x) = - (1/2)x^2 + (1/4)
 Find and classify the fixed points (node, saddle, focus) according to their stability.
 \end{problem}
 
-Solution goes here.
+In this problem, we need to use the Hamiltonian formalism.
+As such, we first write
+\[
+    \label{eq:hamiltonian}
+    H(x, p) = T + V = \frac{p^2}{2} - \frac{1}{2}x^2 + \frac{1}{4}x^4,
+\]
+
+which is used to find the equations of motion:
+\[
+    \label{eq:hamiltonian_eqs}
+    \begin{aligned}
+        \dot{x} &= +\frac{\partial H}{\partial p} = p,\\
+        \dot{p} &= -\frac{\partial H}{\partial x} = x - x^3 = x(1 - x^2).
+    \end{aligned}
+\]
+
+The fixed points are obtained by setting them to zero and
+solving
+\[
+    \begin{aligned}
+        0 &= p,\\
+        0 &= x(1 - x^2) \implies x = 0, \pm 1.
+    \end{aligned}
+\]
+
+They combine to give us the fixed points
+\[
+    \begin{aligned}
+        \textbf{x}_0^* &= (0, 0),\\
+        \textbf{x}_1^* &= (1, 0),\\
+        \textbf{x}_2^* &= (-1, 0).
+    \end{aligned}
+\]
+
+In order to classify the fixed points, we need to 
+calculate the Jacobian matrix. In our case,
+\[
+    J = \begin{bmatrix}
+        \displaystyle\frac{\partial \dot{x}}{\partial x} & \displaystyle\frac{\partial \dot{x}}{\partial p}\\[2.5ex]
+        \displaystyle\frac{\partial \dot{p}}{\partial x} & \displaystyle\frac{\partial \dot{p}}{\partial p}
+    \end{bmatrix} =
+    \begin{bmatrix}
+        0 & 1\\
+        1 - 3x^2 & 0
+    \end{bmatrix}.
+\]
+
+By evaluating the Jacobian at the fixed points, we obtain the
+eigenvalues for each
+\[
+    \begin{aligned}
+        J(\textbf{x}_0^*) &= \begin{bmatrix}
+            0 & 1\\
+            1 & 0
+        \end{bmatrix} \implies \lambda^2 - 1 = 0 \implies \lambda = \pm 1\\
+        J(\textbf{x}_1^*) &= \begin{bmatrix}
+            0 & 1\\
+            -2 & 0
+        \end{bmatrix} \implies \lambda^2 +2=0 \implies \lambda = \pm i\sqrt{2}.
+    \end{aligned}
+\]
+Since $J(\textbf{x}_1^*) = J(\textbf{x}_2^*)$, we have them all and
+we can proceed with the classification:
+
+\begin{enumerate}[(1)] 
+    \item $\textbf{x}_0^*$ is a saddle because it has \textbf{real eigenvalues
+    with opposite signs.}
+    \item $\textbf{x}_1^*$ and $\textbf{x}_2^*$ are limit cycles because
+    their \textbf{eigenvalues are purely imaginary.}
+\end{enumerate}
+
+All in all,
+\[
+\boxed{
+    \begin{aligned}
+        \textbf{x}_0^* &= (0, 0) \rightarrow \text{ saddle},\\
+        \textbf{x}_1^* &= (1, 0) \rightarrow \text{ limit cycle},\\
+        \textbf{x}_2^* &= (-1, 0) \rightarrow \text{ limit cycle}.
+    \end{aligned}
+}
+\]
+
 
 \begin{problem}{Hopf bifurcation}{problem-label-2}
 Consider the system $\ddot{x} + \lambda(x^2 - 1)\dot{x} + x - a = 0$.
@@ -41,20 +122,121 @@ shown at three successive levels of construction.
 \end{center}
 \end{problem}
 
-Solution goes here.
+We observe that the object has been broken in 20 pieces, 
+and each piece would need to be scaled by a factor of 3
+to obtain the original object. Then,
+
+\[
+\boxed{
+    D = \frac{\log{N}}{\log{\epsilon}} = \frac{\log{20}}{\log{3}} \approx 2.7268,
+}
+\]
+which is less than 3, as expected.
+
 
 \begin{problem}{Sensitivity and analytical solution}{problem-label-4}
 
-    Consider the map $x_{n+1} = f(x_n) = (2x_n - 1)^3$ , for $x_n \in [-1, 1]$.
+    Consider the map $x_{n+1} = f(x_n) = (2x_n^{2/3} - 1)^3$ , for $x_n \in [-1, 1]$.
 
     \begin{enumerate}[(a)]
         \item Show, by iterating two close initial conditions, that this map is chaotic.
-        \item Show that $x_n = \cos^3 (2^n \cos^{-1} (x_0))$ is a solution $\forall n$.
+        \item Show that $x_n = \cos^3 (2^n \cos^{-1} (x_0^{1/3}))$ is a solution $\forall n$.
     \end{enumerate}
 
 \end{problem}
 
-Solution goes here.
+\begin{enumerate}[(a)]
+    \item In python, we coded this simple function that implements
+    the map and returns the evolution of an initial condition:
+    \begin{lstlisting}[style=pythonstyle]
+    # Simple function
+    def map_evolution(x0: float, iter: int) -> list:
+        """
+        Computes the evolution of an initial condition.
+
+        Parameters
+        ----------
+        x0 : float
+            Initial condition.
+        iter : int
+            Number of iterations
+
+        Returns
+        -------
+        x : list
+            Evolution of the initial condition.
+        """
+        # Add the first element
+        x = [x0]
+
+        # Iteration process
+        for i in range(iter + 1):
+            
+            # Compute next element
+            next = (2 * x[i] - 1)**3
+
+            # Save
+            x.append(next)
+
+        return x
+    \end{lstlisting}
+
+    Then we just chose two \textit{extremely} close initial conditions
+    and found the evolution of both:
+    \begin{lstlisting}[style=pythonstyle]
+    # Initial conditions
+    x0 = 0.9999999998
+    x1 = 0.9999999999
+
+    # Iterate!
+    x0_results = map_evolution(x0, iter = 14)
+    x1_results = map_evolution(x1, iter = 14)
+    \end{lstlisting}
+
+    % Figure
+    \begin{center}
+        \includegraphics[scale=0.7]{images/4a.pdf}
+        \captionof{figure}{Evolution of two close initial conditions, plus
+        the difference between them.}
+        \label{fig:4a}
+    \end{center}
+
+    The results can be seen in figure \ref{fig:4a}. They evolve together
+    for the first 10 iterations, but, in the 11th iteration, they start to separate. 
+    It takes no time for them to do so, even though they were very close
+    at the beginning. \boxed{\text{This is a clear sign of chaos.}}
+
+
+    \item We'll do it by induction, starting by plugging the expression in the map
+    \[
+        x_{n+1} = [2(\cos^3 (2^n \cos^{-1} (x_0^{1/3}))^{2/3} - 1]^3.
+    \]
+    Then, some straightforward algebra gives us
+    \[
+    \begin{aligned}
+        x_{n+1} &= [2\cos^2 (2^n \cos^{-1} (x_0^{1/3})) - 1]^3\\
+        &= [2\cos^2 (2\cdot 2^{n-1} \cos^{-1} (x_0^{1/3})) - 1]^3.
+    \end{aligned}
+    \]
+    We can now apply the identity $\cos^2(2x)=(1+\cos(4x))/2$,
+    resulting in
+    \[
+    \begin{aligned}
+        x_{n+1} &= \left[2\cdot\frac{1 + \cos(2^2\cdot 2^{n-1} \cos^{-1} (x_0^{1/3}))}{2}-1\right]^3\\
+        &= \left[\cos(2^{n+1} \cos^{-1} (x_0^{1/3}))\right]^3\\
+        &= \cos^3 (2^{n+1} \cos^{-1} (x_0^{1/3})).
+    \end{aligned}
+    \]
+    Thus, the expression holds for $n+1$. To finish, let's verify the base case
+    \[
+        x_0 = \cos^3 (2^0 \cos^{-1} (x_0^{1/3})) = \cos^3 (\cos^{-1} (x_0^{1/3})) = x_0^{3/3} = x_0.
+    \]
+
+    \boxed{
+        \text{Therefore, } x_n = \cos^3 (2^n \cos^{-1} (x_0^{1/3})) \text{ is a solution } \forall n.
+    }
+
+\end{enumerate}
 
 \begin{problem}{Bifurcation diagram and Lyapunov exponent}{problem-label-5}
     Consider the map $x_{n+1} = f(x_n) = \sin^2(r\,\arcsin{\sqrt{x_n}})$, for $x_n \in [0, 1]$.

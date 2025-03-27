@@ -63,3 +63,34 @@
 % \begin{document}
 % Hello, world! This is a minimal document to test the preamble.
 % \end{document}
+
+\usepackage{listings} 
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0.12,0.6,0.33}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0,0.1,0.8}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonstyle}{
+   backgroundcolor=\color{backcolour},
+   commentstyle=\color{codegreen},
+   keywordstyle=\color{codeblue}\bfseries,
+   numberstyle=\color{codegray},
+   stringstyle=\color{codepurple},
+   basicstyle=\ttfamily\footnotesize,
+   breakatwhitespace=false,
+   breaklines=true,
+   captionpos=b,
+   keepspaces=true,
+   numbers=left,
+   numbersep=5pt,
+   showspaces=false,
+   showstringspaces=false,
+   showtabs=false,
+   tabsize=4,
+   language=Python
+}
+
+% \usepackage{minted}
