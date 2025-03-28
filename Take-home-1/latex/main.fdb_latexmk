@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1743054727.79969 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743054729.00414 0
+["pdflatex"] 1743124019.3458 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743124020.58122 0
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743054726.32914 9416 7fa24c3ad975cffeea1b59e485fc5b04 ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743124019.10932 9419 7fba059dad0b539fb54416d08c893275 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -221,9 +221,9 @@
   "format.tex" 1742558514 855 e6f5714a2a2aed0980cdeb3aa5fefa23 ""
   "images/4a.pdf" 1743050470.49258 134071 ea5cbd264a98a10d84e29cd7b914b482 ""
   "images/cube_fractal.jpg" 1742937830.5118 34737 38a12274a0fe8f3b66624058c18953ad ""
-  "main.aux" 1743054728.8912 1204 4efeadc0de3e38769250bb5523526aa1 "pdflatex"
-  "main.out" 1743054728.6052 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1743054726.32914 9416 7fa24c3ad975cffeea1b59e485fc5b04 ""
+  "main.aux" 1743124020.47064 1204 4efeadc0de3e38769250bb5523526aa1 "pdflatex"
+  "main.out" 1743124020.17957 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1743124019.10932 9419 7fba059dad0b539fb54416d08c893275 ""
   "preamble.tex" 1743053007.7537 2266 ecd9c65eb85f263f2e6371b287db7e21 ""
   (generated)
   "main.aux"
