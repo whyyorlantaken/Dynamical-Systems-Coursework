@@ -194,12 +194,13 @@ which is less than 3, as expected.
     \end{lstlisting}
 
     % Figure
-    \begin{center}
+    \begin{figure}[!ht]
+        \centering
         \includegraphics[scale=0.7]{images/4a.pdf}
         \captionof{figure}{Evolution of two close initial conditions, plus
         the difference between them.}
         \label{fig:4a}
-    \end{center}
+    \end{figure}
 
     The results can be seen in figure \ref{fig:4a}. They evolve together
     for the first 10 iterations, but, in the 11th iteration, they start to separate. 
@@ -249,7 +250,53 @@ which is less than 3, as expected.
 
 \end{problem}
 
-Solution goes here.
+\begin{enumerate}[(a)]
+
+    \item Once passed the transient regime, we recorded the stable $x_n$ points
+    for $r$ in the specified range. For plotting, thanks to the helpful description
+    by \cite{WikiTentMap}, we were able to get a good-looking diagram using a
+    matrix to store the values of $x_n$ and $r$, which allowed us to control
+    the resolution in a simple yet effective manner. The result is shown in figure
+    \ref{fig:5a}.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.65]{images/5a[1-4].pdf}
+        \captionof{figure}{Bifurcation diagram for $r \in [1, 4]$.}
+        \label{fig:5a}
+    \end{figure}
+
+    It clearly shows transition to chaos by \textit{period doubling}, and, interesting
+    aspect, sinusoidal-like curves where there are no or few stable points as 
+    $r$ increases.
+    \item To calculate the Lyapunov exponent, we used the formula
+    \[
+        \lambda = \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} \log{|f'(x_i)|},
+    \]
+    and, in our case, we have
+    \[
+        f'(x) = \frac{r\sin{\left(2r\arcsin{\sqrt{x}}\right)}}{2\sqrt{x(1-x)}}.
+    \]
+    In the implementation, we added small offsets both in the logarithm and 
+    derivative denominator to avoid division-by-zero errors. The results are shown
+    in figure \ref{fig:5b}.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.75]{images/5b[1-4].pdf}
+        \captionof{figure}{Lyapunov exponent for $r \in [1, 4]$.}
+        \label{fig:5b}
+    \end{figure}
+
+    Most of it was expected just by looking at the bifurcation diagram: 
+    negative in the beginning and rapidly increasing to positive. However, 
+    it is of special attention what happens at $r = 3.0$, where the Lyapunov
+    exponent goes from a positive value to $-\infty$, which means the system reaches a superstable point!
+    After that, it immediatly goes back to the trend it was following in the positive
+    region. It's strange but wonderful.
+
+
+\end{enumerate}
 
 \begin{problem}{Phase space}{problem-label-6}
 
@@ -309,7 +356,7 @@ Solution goes here.
 
 % \vfill
 
-% \bibliographystyle{apalike}
-% \bibliography{references}
+\bibliographystyle{apalike}
+\bibliography{references}
 
 \end{document}
