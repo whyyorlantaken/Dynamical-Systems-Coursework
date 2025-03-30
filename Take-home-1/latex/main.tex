@@ -267,8 +267,7 @@ which is less than 3, as expected.
     \end{figure}
 
     It clearly shows transition to chaos by \textit{period doubling}, and, interesting
-    aspect, sinusoidal-like curves where there are no or few stable points as 
-    $r$ increases.
+    aspect, sinusoidal-like curves, indicating points that are not being visited.
     \item To calculate the Lyapunov exponent, we used the formula
     \[
         \lambda = \lim_{n \to \infty} \frac{1}{n} \sum_{i=0}^{n-1} \log{|f'(x_i)|},
@@ -288,12 +287,23 @@ which is less than 3, as expected.
         \label{fig:5b}
     \end{figure}
 
-    Most of it was expected just by looking at the bifurcation diagram: 
-    negative in the beginning and rapidly increasing to positive. However, 
-    it is of special attention what happens at $r = 3.0$, where the Lyapunov
-    exponent goes from a positive value to $-\infty$, which means the system reaches a superstable point!
-    After that, it immediatly goes back to the trend it was following in the positive
-    region. It's strange but wonderful.
+    We could have forseen the results just by looking at the bifurcation diagram. That is, negative
+    for a very small range of $r$ at the beginning, and then increasingly positive for the rest
+    of it.
+
+
+    \textbf{Note}: When solving the problem, we came across an interesting finding: the map
+    is \textit{not} chaotic for $r = 3.0$ and $x_0 = 0.250$. This is shown in figure \ref{fig:5c}, where
+    we plotted the nontransient evolution of such conditions.
+
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.75]{images/not-chaotic.pdf}
+        \captionof{figure}{Strange non-chaotic behaviour for specific conditions.}
+        \label{fig:5c}
+    \end{figure}
+
+    The Lyapunov exponent for this case goes to negative infinity!
 
 
 \end{enumerate}
@@ -314,7 +324,23 @@ which is less than 3, as expected.
 
 \end{problem}
 
-Solution goes here.
+\begin{enumerate}
+    \item TBD.
+    \item This is the figure:
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.12]{images/6b.png}
+        \captionof{figure}{Phase space for $a = 0.6$.}
+        \label{fig:6b}
+    \end{figure}
+    \item sndsj
+    \begin{figure}[!ht]
+        \centering
+        \includegraphics[scale=0.12]{images/6c.png}
+        \captionof{figure}{Phase space for $a = 0.68$.}
+        \label{fig:6c}
+    \end{figure}
+\end{enumerate}
 
 % Now, let's see how to use the \texttt{problem} environment. 
 % The \texttt{problem} environment is defined in the \texttt{format.tex} file. 

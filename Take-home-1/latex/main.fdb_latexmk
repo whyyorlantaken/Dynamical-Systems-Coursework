@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1743138155.8152 "main.aux" "main.bbl" "main" 1743138906.0908 0
+["bibtex main"] 1743298905.89875 "main.aux" "main.bbl" "main" 1743298908.94275 0
   "./references.bib" 1743136073.01654 904 93b8de3473825e9c8750fc94b20ef5b6 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1743138905.80556 1887 5d29c032922c01d6779aa485e0bebbfd "pdflatex"
+  "main.aux" 1743298908.6293 2599 d47d94d90cc4d3b2507a07cd29396971 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1743138904.71676 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743138906.09099 0
+["pdflatex"] 1743298905.99597 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743298908.94291 0
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743138904.48454 11418 46a1780f12737e956bc7b44ceb9dda9d ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743298902.74725 12164 a0ec753c28f748e5abc398e26b107fa9 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -236,12 +236,15 @@
   "format.tex" 1742558514 855 e6f5714a2a2aed0980cdeb3aa5fefa23 ""
   "images/4a.pdf" 1743050470.49258 134071 ea5cbd264a98a10d84e29cd7b914b482 ""
   "images/5a[1-4].pdf" 1743134478.66345 409901 8fd2eb3482113745deec8f6b17571b3f ""
-  "images/5b[1-4].pdf" 1743134325.09904 167422 dce35e85efdad56258fc45b1aba012c6 ""
+  "images/5b[1-4].pdf" 1743231849.73628 168175 026114e10736a7e9bb2b1ebc525b4b8b ""
+  "images/6b.png" 1743298733.26148 1596285 9dd7c2c79e4e53d07d31b4ff6e3aebc1 ""
+  "images/6c.png" 1743298710.31224 199156 faaff4f1c94ee4b9c538e34efcd8ffdc ""
   "images/cube_fractal.jpg" 1742937830.5118 34737 38a12274a0fe8f3b66624058c18953ad ""
-  "main.aux" 1743138905.80556 1887 5d29c032922c01d6779aa485e0bebbfd "pdflatex"
-  "main.bbl" 1743138155.89985 214 cb27bca0988fe5d33510d1c6768c0f60 "bibtex main"
-  "main.out" 1743138905.50356 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1743138904.48454 11418 46a1780f12737e956bc7b44ceb9dda9d ""
+  "images/not-chaotic.pdf" 1743232989.2855 101578 aa68f001c4ffbcf3e2aa898979212c5d ""
+  "main.aux" 1743298908.6293 2599 d47d94d90cc4d3b2507a07cd29396971 "pdflatex"
+  "main.bbl" 1743298905.99028 214 cb27bca0988fe5d33510d1c6768c0f60 "bibtex main"
+  "main.out" 1743298906.81129 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1743298902.74725 12164 a0ec753c28f748e5abc398e26b107fa9 ""
   "preamble.tex" 1743053007.7537 2266 ecd9c65eb85f263f2e6371b287db7e21 ""
   (generated)
   "main.aux"
