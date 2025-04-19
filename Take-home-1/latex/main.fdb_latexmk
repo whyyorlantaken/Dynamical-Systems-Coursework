@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1743298905.89875 "main.aux" "main.bbl" "main" 1743298908.94275 0
-  "./references.bib" 1743136073.01654 904 93b8de3473825e9c8750fc94b20ef5b6 ""
+["bibtex main"] 1743398348.68717 "main.aux" "main.bbl" "main" 1743399180.3961 0
+  "./references.bib" 1743398368.40872 890 abd141a536c51a34e6f4465eb7e17a45 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/apalike.bst" 1292289607 24635 604dafcc79f521a11ea73e506e1fbd98 ""
-  "main.aux" 1743298908.6293 2599 d47d94d90cc4d3b2507a07cd29396971 "pdflatex"
+  "main.aux" 1743399180.06025 2740 58b729481e2d6b8c25e13e33d7755427 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1743298905.99597 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743298908.94291 0
+["pdflatex"] 1743399177.20689 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" "main.pdf" "main" 1743399180.39626 0
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743298902.74725 12164 a0ec753c28f748e5abc398e26b107fa9 ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/main.tex" 1743399176.88121 15992 a78979b581a4c591a98a1ed8f0e00b74 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -39,6 +39,8 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1136768653 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1136768653 1492 86331993fe614793f5e7e755835c31c5 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti8.tfm" 1136768653 1504 1747189e0441d1c18f3ea56fafc1c480 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1136768653 768 1321e9409b4137d6fb428ac9dc956269 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm" 1136768653 764 c98a2af25c99b73a368cf7336e255190 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/esint/esint10.tfm" 1569948395 364 55557743e6c24ee44e49bc5e8dbbe3cd ""
@@ -52,8 +54,8 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb" 1248133631 33993 9b89b85fd2d9df0482bd47194d1d3bf3 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb" 1248133631 28902 2f5c04fd2884d1878057baa5aad22765 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
@@ -241,11 +243,11 @@
   "images/6c.png" 1743298710.31224 199156 faaff4f1c94ee4b9c538e34efcd8ffdc ""
   "images/cube_fractal.jpg" 1742937830.5118 34737 38a12274a0fe8f3b66624058c18953ad ""
   "images/not-chaotic.pdf" 1743232989.2855 101578 aa68f001c4ffbcf3e2aa898979212c5d ""
-  "main.aux" 1743298908.6293 2599 d47d94d90cc4d3b2507a07cd29396971 "pdflatex"
-  "main.bbl" 1743298905.99028 214 cb27bca0988fe5d33510d1c6768c0f60 "bibtex main"
-  "main.out" 1743298906.81129 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1743298902.74725 12164 a0ec753c28f748e5abc398e26b107fa9 ""
-  "preamble.tex" 1743053007.7537 2266 ecd9c65eb85f263f2e6371b287db7e21 ""
+  "main.aux" 1743399180.06025 2740 58b729481e2d6b8c25e13e33d7755427 "pdflatex"
+  "main.bbl" 1743398348.77651 200 05d7e0b203f2d6b3b6c6b5b715ae124e "bibtex main"
+  "main.out" 1743399178.10823 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1743399176.88121 15992 a78979b581a4c591a98a1ed8f0e00b74 ""
+  "preamble.tex" 1743361051.36045 2271 ff2396581b2740b09357aa7c5bf3c624 ""
   (generated)
   "main.aux"
   "main.log"

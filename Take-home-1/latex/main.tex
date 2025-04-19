@@ -16,6 +16,8 @@
 \textsf{\textbf{Lecturer:}} \text{Mario Cosenza}, 
 \href{mcosenza@yachaytech.edu.ec}{\texttt{mcosenza@yachaytech.edu.ec}}
 
+Yachay Tech, \today.
+
 \vspace{2ex}
 
 \begin{problem}{Classification of fixed points}{problem-label}
@@ -23,14 +25,14 @@ A particle of mass $m = 1$ is moving in the potential $V(x) = - (1/2)x^2 + (1/4)
 Find and classify the fixed points (node, saddle, focus) according to their stability.
 \end{problem}
 
-In this problem, we need to use the Hamiltonian formalism.
+We need to use the Hamiltonian formalism for this problem.
 As such, we first write
 \[
     \label{eq:hamiltonian}
     H(x, p) = T + V = \frac{p^2}{2} - \frac{1}{2}x^2 + \frac{1}{4}x^4,
 \]
 
-which is used to find the equations of motion:
+which is used to find the equations of motion
 \[
     \label{eq:hamiltonian_eqs}
     \begin{aligned}
@@ -43,12 +45,12 @@ The fixed points are obtained by setting them to zero and
 solving
 \[
     \begin{aligned}
-        0 &= p,\\
-        0 &= x(1 - x^2) \implies x = 0, \pm 1.
+        0 &= p^*,\\
+        0 &= x(1 - x^2) \implies x^* = 0, \pm 1.
     \end{aligned}
 \]
 
-They combine to give us the fixed points
+They combine to give us
 \[
     \begin{aligned}
         \textbf{x}_0^* &= (0, 0),\\
@@ -57,7 +59,7 @@ They combine to give us the fixed points
     \end{aligned}
 \]
 
-In order to classify the fixed points, we need to 
+In order to do the classification, we need to 
 calculate the Jacobian matrix. In our case,
 \[
     J = \begin{bmatrix}
@@ -70,7 +72,7 @@ calculate the Jacobian matrix. In our case,
     \end{bmatrix}.
 \]
 
-By evaluating the Jacobian at the fixed points, we obtain the
+By evaluating the Jacobian at the points found, we obtain the
 eigenvalues for each
 \[
     \begin{aligned}
@@ -87,12 +89,12 @@ eigenvalues for each
 Since $J(\textbf{x}_1^*) = J(\textbf{x}_2^*)$, we have them all and
 we can proceed with the classification:
 
-\begin{enumerate}[(1)] 
-    \item $\textbf{x}_0^*$ is a saddle because it has \textbf{real eigenvalues
-    with opposite signs.}
+\begin{itemize}[label=\textbf{--}]
+    \item $\textbf{x}_0^*$ is a saddle because it has real eigenvalues
+    with opposite sign.
     \item $\textbf{x}_1^*$ and $\textbf{x}_2^*$ are limit cycles because
-    their \textbf{eigenvalues are purely imaginary.}
-\end{enumerate}
+    their eigenvalues are purely imaginary.
+\end{itemize}
 
 All in all,
 \[
@@ -111,7 +113,70 @@ Consider the system $\ddot{x} + \lambda(x^2 - 1)\dot{x} + x - a = 0$.
 Find the curves on the space of parameters $(\lambda, a)$ where a Hopf bifurcation occurs.
 \end{problem}
 
-The second solution goes here.
+We start by rewriting the equation as a system of first-order ODEs. We define
+\[
+    \textbf{S}(t) = \begin{bmatrix}
+        x_1\\
+        x_2
+    \end{bmatrix} = \begin{bmatrix}
+        x\\
+        \dot{x}
+    \end{bmatrix},
+\]
+so that
+\[
+    \frac{d\textbf{S}}{dt} = \begin{bmatrix}
+        \dot{x}_1\\
+        \dot{x}_2
+    \end{bmatrix}=\begin{bmatrix}
+        x_2\\
+        -\lambda(x_1^2 - 1)x_2 - x_1 + a
+    \end{bmatrix}.
+\]
+We have to look for the fixed points now. The first equation yields $x_2^*=0$, and
+we can plug it into the second one:
+\[
+    0 = - x_1^* + a \implies x_1^* = a.
+\]
+So the fixed points are $\textbf{x}^*=(a,0)$. We can proceed with the Jacobian matrix,
+\[
+    J = \begin{bmatrix}
+        0 & 1\\
+        -2\lambda x_1 x_2 - 1 & -\lambda(x_1^2 - 1)
+    \end{bmatrix},
+\]
+and evaluate it at the fixed point
+\[
+    J(\textbf{x}^*) = \begin{bmatrix}
+        0 & 1\\
+        -1 & -\lambda(a^2 - 1)
+    \end{bmatrix}.
+\]
+Then, the characteristic equation is
+\[
+    \omega^2 + \lambda(a^2 - 1)\omega + 1 = 0,
+\]
+whose roots are
+\[
+    \omega_{1,2} = \frac{-\lambda(a^2 - 1) \pm i\sqrt{4-\lambda^2(a^2 - 1)^2}}{2},
+\]
+assuming $4-\lambda^2(a^2 - 1)^2>0$, so that $\omega_1=\omega_2^*$. Furthermore, a Hopf bifurcation occurs
+when the eigenvalues cross the imaginary axis, which happens when the real part of the eigenvalues changes
+sign. In this system, this occurs when
+\[
+    \lambda(a^2 - 1) = 0 \implies a^2 = 1.
+\]
+We ommit the case when $\lambda = 0$ because it would take $\dot{x}$ away from the ODE. Therefore, the bifurcation
+happens at the curves
+\[
+\boxed{
+    \begin{aligned}
+        a &= 1,\\
+        a &= -1,
+    \end{aligned}
+}
+\]
+when limited by $4-\lambda^2(a^2 - 1)^2>0$.
 
 \begin{problem}{Fractal dimension}{problem-label-3}
 Calculate the fractal dimension of the following object
@@ -122,7 +187,7 @@ shown at three successive levels of construction.
 \end{center}
 \end{problem}
 
-We observe that the object has been broken in 20 pieces, 
+We observe that the object has been broken into 20 pieces, 
 and each piece would need to be scaled by a factor of 3
 to obtain the original object. Then,
 
@@ -147,10 +212,10 @@ which is less than 3, as expected.
 
 \begin{enumerate}[(a)]
     \item In python, we coded this simple function that implements
-    the map and returns the evolution of an initial condition:
+    the map and returns the evolution given an initial condition:
     \begin{lstlisting}[style=pythonstyle]
     # Simple function
-    def map_evolution(x0: float, iter: int) -> list:
+    def map(x0: float, iter: int) -> list:
         """
         Computes the evolution of an initial condition.
 
@@ -181,22 +246,22 @@ which is less than 3, as expected.
         return x
     \end{lstlisting}
 
-    Then we just chose two \textit{extremely} close initial conditions
-    and found the evolution of both:
+    Then we just chose two \textit{extremely} close initial conditions (denoted $x_0$ and $x_1$),
+    and found the map evolutions:
     \begin{lstlisting}[style=pythonstyle]
     # Initial conditions
     x0 = 0.9999999998
     x1 = 0.9999999999
 
     # Iterate!
-    x0_results = map_evolution(x0, iter = 14)
-    x1_results = map_evolution(x1, iter = 14)
+    x0_evol = map(x0, iter = 14)
+    x1_evol = map(x1, iter = 14)
     \end{lstlisting}
 
     % Figure
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.7]{images/4a.pdf}
+        \includegraphics[scale=0.6]{images/4a.pdf}
         \captionof{figure}{Evolution of two close initial conditions, plus
         the difference between them.}
         \label{fig:4a}
@@ -204,7 +269,7 @@ which is less than 3, as expected.
 
     The results can be seen in figure \ref{fig:4a}. They evolve together
     for the first 10 iterations, but, in the 11th iteration, they start to separate. 
-    It takes no time for them to do so, even though they were very close
+    It takes little time for them to do so, even though they were very close
     at the beginning. \boxed{\text{This is a clear sign of chaos.}}
 
 
@@ -252,7 +317,7 @@ which is less than 3, as expected.
 
 \begin{enumerate}[(a)]
 
-    \item Once passed the transient regime, we recorded the stable $x_n$ points
+    \item Once passed the transient regime, we recorded the data points
     for $r$ in the specified range. For plotting, thanks to the helpful description
     by \cite{WikiTentMap}, we were able to get a good-looking diagram using a
     matrix to store the values of $x_n$ and $r$, which allowed us to control
@@ -265,6 +330,7 @@ which is less than 3, as expected.
         \captionof{figure}{Bifurcation diagram for $r \in [1, 4]$.}
         \label{fig:5a}
     \end{figure}
+    
 
     It clearly shows transition to chaos by \textit{period doubling}, and, interesting
     aspect, sinusoidal-like curves, indicating points that are not being visited.
@@ -291,28 +357,26 @@ which is less than 3, as expected.
     for a very small range of $r$ at the beginning, and then increasingly positive for the rest
     of it.
 
-
     \textbf{Note}: When solving the problem, we came across an interesting finding: the map
     is \textit{not} chaotic for $r = 3.0$ and $x_0 = 0.250$. This is shown in figure \ref{fig:5c}, where
-    we plotted the nontransient evolution of such conditions.
+    we plotted the nontransient evolution of such conditions.     The Lyapunov exponent for this case goes to negative infinity!
+
 
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.75]{images/not-chaotic.pdf}
+        \includegraphics[scale=0.65]{images/not-chaotic.pdf}
         \captionof{figure}{Strange non-chaotic behaviour for specific conditions.}
         \label{fig:5c}
     \end{figure}
 
-    The Lyapunov exponent for this case goes to negative infinity!
-
 
 \end{enumerate}
-
+\newpage
 \begin{problem}{Phase space}{problem-label-6}
 
     The evolution of a system is described by the following equation:
     \[
-        \ddot{x} + a\ddot{x}+\dot{x}-|x|+1=0, \text{ for } a > 0.
+        \dddot{x} + a\ddot{x}+\dot{x}-|x|+1=0, \text{ for } a > 0.
     \]
 
     \begin{enumerate}[(a)]
@@ -324,63 +388,136 @@ which is less than 3, as expected.
 
 \end{problem}
 
-\begin{enumerate}
-    \item TBD.
-    \item This is the figure:
+\begin{enumerate}[(a)]
+    \item We first need to convert the third-order ODE into a system of three first-order ODEs. 
+    We do this by defining the state vector
+    \[
+        \textbf{S}(t) = \begin{bmatrix}
+            x_1\\
+            x_2\\
+            x_3
+        \end{bmatrix} = \begin{bmatrix}
+            x\\
+            \dot{x}\\
+            \ddot{x}
+        \end{bmatrix},
+    \]
+    and writing the system of ODEs as
+    \[
+        \frac{d\textbf{S}}{dt} = \begin{bmatrix}
+            x_2\\
+            x_3\\
+            -a x_3 - x_2 + |x_1| - 1
+        \end{bmatrix}.
+    \]
+    Similarly as before, we set each equation to zero and solve for the fixed points:
+    \[
+        \begin{aligned}
+            0 &= x_2,\\
+            0 &= x_3,\\
+            0 &= -a x_3 - x_2 + |x_1| - 1.
+        \end{aligned}
+    \]
+    Now, plugging the first two in the third one gives us
+    \[
+        0 = |x_1| - 1 \implies x_1 = \pm 1.
+    \]
+    Thus, the fixed points are
+    \[\boxed{
+        \begin{aligned}
+            \textbf{x}_0^* &= (1, 0, 0),\\
+            \textbf{x}_1^* &= (-1, 0, 0).
+        \end{aligned}
+    }
+    \]
+
+    \item Rewriting the ODE as a system of first-order ODEs
+    is also useful for solving it \textit{numerically}. In python, we started by creating 
+    a function that implements such system:
+
+    \begin{lstlisting}[style=pythonstyle]
+    # Little function
+    def system(t: float, S: np.ndarray, a: float) -> np.ndarray:
+        """
+        System of first-order ODEs.
+
+        Parameters
+        ----------
+        t : float
+            Time.
+        S : np.ndarray
+            State vector.
+        a : float
+            Parameter.
+
+        Returns
+        -------
+        np.ndarray
+            Derivative of the state vector.
+        """
+        # Extract variables
+        x1, x2, x3 = S
+
+        # Define the equations
+        dx1_dt = x2
+        dx2_dt = x3
+        dx3_dt = -a * x3 - x2 + abs(x1) - 1
+
+        return [dx1_dt, dx2_dt, dx3_dt]
+    \end{lstlisting}
+
+    After doing that, we called the \texttt{solve\_ivp} function from the \texttt{scipy}
+    library to solve the system of equations:
+
+    \begin{lstlisting}[style=pythonstyle]
+        # Set a
+        a = 0.60
+
+        # Time span and evaluation
+        t_span = (0, 1000)
+        t_eval = np.linspace(t_span[0], t_span[1], 15000)
+
+        # Initial conditions
+        S0 = [0.1, 0.1, 0.1]
+
+        # And solve the system!
+        sol = solve_ivp(slope, t_span, S0, t_eval, method='RK45', args=(a,))
+
+        # Extract the solutions
+        x1 = sol.y[0]
+        x2 = sol.y[1]
+        x3 = sol.y[2]
+    \end{lstlisting}
+
+    Finally, we plotted the results in phase space, shown in figure \ref{fig:6b}. For
+    visualization purposes, we didn't include the first part of the evolution, and also added 
+    a small set of axes indicating the orientation. I think it came out pretty well.
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.12]{images/6b.png}
-        \captionof{figure}{Phase space for $a = 0.6$.}
+        \includegraphics[scale=0.10]{images/6b.png}
+        \captionof{figure}{Good view of the system evolution in phase space for $a = 0.60$.}
         \label{fig:6b}
     \end{figure}
-    \item sndsj
+
+    To some degree, it resembles Rossler's attractor. \boxed{\text{Answering, it is indeed of \textit{strange} type.}}
+
+    \item Reusing the same code, we set $a = 0.68$ and the plot
+    is shown in figure \ref{fig:6c}. 
     \begin{figure}[!ht]
         \centering
-        \includegraphics[scale=0.12]{images/6c.png}
-        \captionof{figure}{Phase space for $a = 0.68$.}
+        \includegraphics[scale=0.10]{images/6c.png}
+        \captionof{figure}{Non-chaotic system evolution in phase space for $a = 0.68$.}
         \label{fig:6c}
     \end{figure}
-\end{enumerate}
 
-% Now, let's see how to use the \texttt{problem} environment. 
-% The \texttt{problem} environment is defined in the \texttt{format.tex} file. 
-% You can define your own environments following 
-% the \texttt{problem} environment.
+    The result is quite different from the previous: it looks like
+    a \textit{closed curve} in phase space. An evolution like this 
+    indicates the system exhibits stable oscillatory behaviour. In
+    other words, \boxed{\text{it is not chaotic when $a = 0.68$.}}
+\end{enumerate} 
 
-% What do you think about this? I think it's a great 
-% way to work with problems. You can also use 
-% the \texttt{problem} environment to write your own problems. 
-% For instance, you can write your own problems 
-% in the \texttt{problem} environment and then use 
-% the \texttt{problem} environment to write your own solutions.
-
-
-% Take this cool equation for example:
-% \begin{equation}
-%     \label{eq:example}
-%     \begin{aligned}
-%         \im \hbar \pdv{\psi}{t} &= -\dfrac{\hbar^2}{2m} \nabla^2 \psi + V(x) \psi,
-%     \end{aligned}
-% \end{equation}
-
-% where $\psi$ is the wave function, $V(x)$ is the potential energy, 
-% and $m$ is the mass of the particle. 
-% The equation describes how the wave function evolves over time.
-% The \texttt{problem} environment is defined in the \texttt{format.tex} file. 
-% You can define your own environments following 
-% the \texttt{problem} environment.
-
-\vspace{5ex}
-\hrule
-\vspace{1ex}
-
+\newpage
 \vspace{0.1ex}
-
-% =================================================
-
-% \newpage
-
-% \vfill
 
 \bibliographystyle{apalike}
 \bibliography{references}
