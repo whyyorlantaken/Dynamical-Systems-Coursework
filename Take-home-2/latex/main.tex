@@ -39,7 +39,45 @@ exists a superstable orbit of period $2^n$.
 \end{enumerate}
 \end{problem}
 
-Solution here.
+\begin{enumerate}[(a)]
+    \item We start by expanding the function $h(r_n^*)$ around $r_{\infty}$:
+    \[
+        h(r_n^*) = h(r_{\infty}) + h'(r_{\infty})(r_n^*-r_{\infty}) + O((r_n^*-r_{\infty})^2).
+    \]
+    For large $n$, we can neglect higher-order terms:
+    \[
+        h(r_n^*) - h(r_{\infty}) \approx h'(r_{\infty})(r_n^*-r_{\infty}).
+    \]
+    Now, we can use the relation for the superstable orbit:
+    \[
+        r_n^* - r_{\infty} = C \delta^{-n},
+    \]
+    where $C$ is a constant. Substituting this into the previous equation gives us
+    \[
+        h(r_n^*) - h(r_{\infty}) \approx h'(r_{\infty})C\delta^{-n},
+    \]
+    and rearranging yields
+    \[
+    \boxed{
+        \frac{[h(r_n^*)-h(r_{\infty})]\delta^n}{h'(r_{\infty})} = C
+    }.
+    \]
+    \item We can express $r_n^* - r_{\infty}$ as a telescopic series,
+    \[
+        r_n^* - r_{\infty} = (r_{n}^* - r_{n+1}^*) + (r_{n+1}^* - r_{n +2}^*) + \ldots = \sum_{j=0}^{\infty} (r_{n+j}^* - r_{n+j+1}^*).
+    \]
+    Let $\Delta_n = r_{n+j}^* - r_{n+j+1}^*$, so that $\Delta_{n+1} = \Delta_n/\delta$. We can then write
+    \[
+        r_n^* - r_{\infty} = \Delta_n \sum_{j=0}^{\infty} \frac{1}{\delta^j} = \Delta_n \frac{\delta}{\delta - 1},
+    \]
+    using geometric series properties. The last step is given by $\Delta_n = \Delta_1/\delta^{n-1}$, where $\Delta_1$ is a constant. Thus,
+    \[
+        r_n^* - r_{\infty} = \frac{\Delta_1}{\delta^{n-1}} \frac{\delta}{\delta - 1} \implies \boxed{
+            (r_n^*-r_{\infty})\delta^n \propto \frac{\delta^2}{\delta -1}
+        }.
+    \]
+
+\end{enumerate}
 
 \begin{problem}{Schwarz derivative}{problem-label-3}
 
@@ -97,10 +135,17 @@ Consider the logarithmic map $x_{n+1}=f(x_n)=b+\log|x_n|$.
     \end{align*}
     Using properties of summation and limits, we can get $b$ out:
     \begin{align*}
-        \lambda &= \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}b - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_j \\
-                &= \lim_{n\to\infty}\frac{nb}{n} - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_j \\
-                &= b - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_j.
+        \lambda &= \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}b - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_i \\
+                &= \lim_{n\to\infty}\frac{nb}{n} - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_i \\
+                &= b - \lim_{n\to\infty}\frac{1}{n}\sum_{i=1}^{n}x_i.
     \end{align*}
+
+    Finally, for large $n$, we can write the expression as:
+    \[
+    \boxed{
+        \lambda = b - \frac{1}{n}\sum_{j=1}^{n}x_i.
+    }
+    \]
 
 \end{enumerate}
 
@@ -200,7 +245,7 @@ Consider the following map for $x_n \in [0,1],$
 \end{problem}
 
 \begin{enumerate}[(a)]
-    \item A way to see if the map is unimodal is to plot $f(x_n)$ versus $x_n$ for different values
+    \item One way to see if the map is unimodal is to plot $f(x_n)$ versus $x_n$ for different values
     of $b$, and then \textit{visually} check if the function has one maximum or minimum. We did it
     for many $b$'s and the results are shown in Figure \ref{fig:3a}.
     \begin{figure}[!ht]
@@ -210,7 +255,13 @@ Consider the following map for $x_n \in [0,1],$
         \label{fig:3a}
     \end{figure}
 
-    Clearly, $\boxed{\text{the map is unimodal because there is only one maximum.}}$
+    There is only one maximum, which suggests the map in unimodal. However, a more rigorous way to
+    check it is to calculate the derivative of the map and see if it has only \textit{one root}. So, the
+    derivative is given by
+    \[
+    f'(x) = \frac{(1-2x)b^{x(1-x)}\log(b)}{(1-b^{1/4})}
+    \]
+    and it effectively has one root only: $x = 1/2$. Thus, \boxed{\text{the map is indeed unimodal.}}
 
     \item As always, reusing code but changing the map:
     \begin{lstlisting}[style=pythonstyle]
@@ -237,7 +288,7 @@ Consider the following map for $x_n \in [0,1],$
     \begin{lstlisting}[style=pythonstyle]
     # Derivative
     def frac_derivative(x, b):
-        num = (1 - 2 * x) * b**(-x * (1 - x)) * np.log(b)
+        num = (1 - 2 * x) * b**(x * (1 - x)) * np.log(b)
         den = - (1 - b**(1/4)) + 1e-10 # Again, avoid division by zero
         return num/den
     \end{lstlisting}

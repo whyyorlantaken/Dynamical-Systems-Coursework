@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1745277581.29411 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" "main.pdf" "main" 1745277582.52057 0
+["pdflatex"] 1745622904.64981 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" "main.pdf" "main" 1745622905.92372 0
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" 1745277580.66516 9300 644b6d1597acb0ba68f08e94fcadd244 ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" 1745622904.41815 11325 894ecf00283487c8875e408aaab4a44b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -229,13 +229,13 @@
   "commands.tex" 1745029153.89063 1447 1b349ecf0464f9472ea5af918c14ae04 ""
   "format.tex" 1745029153.89363 855 e6f5714a2a2aed0980cdeb3aa5fefa23 ""
   "images/b_power.pdf" 1745028224.11094 1820881 7d95b5f651bf3b5fa9f7007054fc7db4 ""
-  "images/frac_lya.pdf" 1745276767.62017 210735 4df534ab32242aa8c9a8d9fbbb6b0e90 ""
+  "images/frac_lya.pdf" 1745529132.2789 210569 c84cb568e0989bc0879ae7f31add7dca ""
   "images/piecewise_lya.pdf" 1745261840.18033 117392 cbc5eff4bdce50414ce724554a80118b ""
   "images/tanh.pdf" 1745011148.31887 174647 f764d57415a620ee363319ada7391a37 ""
   "images/unimodal.pdf" 1745265002.00398 172852 c69fd28b92106becff05494885037502 ""
-  "main.aux" 1745277582.39523 2028 2b8ec1fd1e94f1b9c4a61f66c2cf1c91 "pdflatex"
-  "main.out" 1745277582.09922 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1745277580.66516 9300 644b6d1597acb0ba68f08e94fcadd244 ""
+  "main.aux" 1745622905.80021 2028 c072e1b65b3c1154ee76333e9d3bf3ed "pdflatex"
+  "main.out" 1745622905.49419 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1745622904.41815 11325 894ecf00283487c8875e408aaab4a44b ""
   "preamble.tex" 1745029155.85407 2271 ff2396581b2740b09357aa7c5bf3c624 ""
   (generated)
   "main.aux"
