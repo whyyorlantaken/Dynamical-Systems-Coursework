@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1745622904.64981 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" "main.pdf" "main" 1745622905.92372 0
+["pdflatex"] 1745623775.50599 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" "main.pdf" "main" 1745623776.731 0
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" 1745622904.41815 11325 894ecf00283487c8875e408aaab4a44b ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/main.tex" 1745623775.27195 11450 d0afbb6c572f36d3ec7bd8f103395673 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -232,10 +232,10 @@
   "images/frac_lya.pdf" 1745529132.2789 210569 c84cb568e0989bc0879ae7f31add7dca ""
   "images/piecewise_lya.pdf" 1745261840.18033 117392 cbc5eff4bdce50414ce724554a80118b ""
   "images/tanh.pdf" 1745011148.31887 174647 f764d57415a620ee363319ada7391a37 ""
-  "images/unimodal.pdf" 1745265002.00398 172852 c69fd28b92106becff05494885037502 ""
-  "main.aux" 1745622905.80021 2028 c072e1b65b3c1154ee76333e9d3bf3ed "pdflatex"
-  "main.out" 1745622905.49419 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1745622904.41815 11325 894ecf00283487c8875e408aaab4a44b ""
+  "images/unimodal.pdf" 1745623456.90636 172885 9ae475b3b28d9d964c04bf57f66be248 ""
+  "main.aux" 1745623776.60795 2028 c072e1b65b3c1154ee76333e9d3bf3ed "pdflatex"
+  "main.out" 1745623776.30095 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1745623775.27195 11450 d0afbb6c572f36d3ec7bd8f103395673 ""
   "preamble.tex" 1745029155.85407 2271 ff2396581b2740b09357aa7c5bf3c624 ""
   (generated)
   "main.aux"

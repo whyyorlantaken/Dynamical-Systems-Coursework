@@ -199,6 +199,9 @@ where $x^*$ is the solution of $(1+\epsilon)x_n + x_n^2 = 1$.
 \begin{enumerate}[(a)]
     \item Again, we can use the same code as before but with some modifications.
     The map function and its derivative are given by:
+
+    \newpage
+
     \begin{lstlisting}[style=pythonstyle]
     # Map
     def piecewise_map(x, eps, x_star):
@@ -223,6 +226,7 @@ where $x^*$ is the solution of $(1+\epsilon)x_n + x_n^2 = 1$.
         \captionof{figure}{Evolution of the piecewise map for $\epsilon \in [-0.4, 0.4]$.}
         \label{fig:2a}
     \end{figure}
+
     The Lyapunov exponent is mostly negative for $\epsilon < 0$ and positive for $\epsilon > 0$, which
     suggests the map is chaotic for $\epsilon > 0$. The transition to chaos is not smooth at all: there's a 
     sudden and rapid change at $\epsilon \approx 0$.
@@ -272,6 +276,7 @@ Consider the following map for $x_n \in [0,1],$
         return num/den
     \end{lstlisting}
     We obtained the results shown in Figure \ref{fig:3b}.
+    \newpage
     \begin{figure}[!ht]
         \centering
         \includegraphics[scale=0.65]{images/b_power.pdf}
@@ -279,10 +284,11 @@ Consider the following map for $x_n \in [0,1],$
         \label{fig:3b}
     \end{figure}
 
-    The map is chaotic from start to finish for $b \in (0,1)$, and it also covers 
-    the full range of $x_n \in [0,1]$. It's quite interesting to see this kind of
-    behavior.
-    \item We were expecting a positive Lyapunov exponent because of the previous part,
+    The map is chaotic from start to finish for $b \in (0,1)$. It covers 
+    the full range of $x_n \in [0,1]$, but the diagram seems to be uniform, that is, 
+    it doesn't change at any point. It's quite interesting to see this kind of behavior.
+
+    \item We were expecting a positive and constant Lyapunov exponent because of the previous part,
     and that's exactly what we got. In order to do it, we had first to compute and code
     the derivative of the map:
     \begin{lstlisting}[style=pythonstyle]
@@ -293,7 +299,8 @@ Consider the following map for $x_n \in [0,1],$
         return num/den
     \end{lstlisting}
     Then, we ran the code and obtained the results shown in Figure \ref{fig:3c}.
-    \begin{figure}[!ht]
+    \newpage
+    \begin{figure}[!h]
         \centering
         \includegraphics[scale=0.65]{images/frac_lya.pdf}
         \captionof{figure}{Lyapunov exponent for $b \in (0,1)$.}
