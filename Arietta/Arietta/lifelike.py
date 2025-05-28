@@ -1,19 +1,27 @@
 # Libraries
 import numpy as np
-from multiprocessing import Pool
+from scipy import ndimage 
 import matplotlib.pyplot as plt
 from IPython.display import Image
 import imageio
 from pathlib import Path
-from tqdm import tqdm
 
-
+# Class
 class LifeLikeCA:
     """
     Simulate Life-like cellular automata.
-    """
 
-    def __init__(self, rule: int = 5, matrix: np.ndarray = None):
+    Parameters
+    ----------
+    rule: int
+        The rule of the cellular automata, should be between 0 and 2^18 - 1.
+    ics: np.ndarray
+        The initial state of the cellular automata as a 2D numpy array.
+    """
+    def __init__(self, 
+                 rule: int = 5, 
+                 res: int = 100,
+                 ics: np.ndarray = None):
         """
         Initialize the cellular automata.
 
@@ -22,29 +30,45 @@ class LifeLikeCA:
         rule: int
             The rule of the cellular automata.
             It should be between 0 and 2^18 - 1.
-        matrix: np.ndarray
+        ics: np.ndarray
             The initial state of the cellular automata. Default is None.
         """
         # Rule validation
         if not 0 <= rule <= 2**18-1:
             raise ValueError(f"Rule must be in [0, {2**18 - 1}].")
-        
-        # Matrix validation
-        if matrix is None or matrix.ndim != 2:
-            raise ValueError("Matrix must be a 2D numpy array.")
-        
-        if not np.isin(matrix, [0, 1]).all():
-            raise ValueError("Matrix must contain only 0s and 1s.")
 
         # Set attributes
         self.rule = rule
-        self.matrix = matrix
-        self.n, self.m = matrix.shape
+
+        # If no ics
+        if ics is None:
+            self.matrix = np.zeros((res, res), dtype = int)
+            self.matrix[res // 2, res // 2] = 1
+        else:
+            self.matrix = ics
+
+        # Matrix validation
+        if self.matrix is None or self.matrix.ndim != 2:
+            raise ValueError("Matrix must be a 2D numpy array.")
+        
+        if not np.isin(self.matrix, [0, 1]).all():
+            raise ValueError("Matrix must contain only 0s and 1s.")
+        
+        # Shape
+        self.n, self.m = self.matrix.shape
+        
+        # Rules extraction
+        self.birth_rule, self.survive_rule = self._rules()
+        
+        # Moore neighborhood kernel for convolution
+        self.kernel = np.array([[1, 1, 1],
+                                [1, 0, 1], 
+                                [1, 1, 1]])
         
         # Print the rules
         print(self)
 
-    def get_rules(self):
+    def _rules(self):
         """
         To get the birth and survive rules from the rule integer.
         It cannot be larger than 2^18 - 1.
@@ -70,105 +94,23 @@ class LifeLikeCA:
 
         return birth_rule, survive_rule
 
-    def moore_neighbors(self, row, col):
+    def count_neighbors(self):
         """
-        Get the Moore neighbors of a cell.
-        It includes both edges and corners.
-
-        Parameters
-        ----------
-        row: int
-            The row of the cell.
-        col: int
-            The column of the cell.
-
+        Count neighbors using convolution.
+        
         Returns
         -------
         np.ndarray
-            The Moore neighbors of the cell.
+            Array of neighbor counts for each cell.
         """
-        # Get the indices (the order doesn't matter)
-        indices = np.array([
-            #[row, col],        
+        # Periodic boundary conditions with convolution
+        return ndimage.convolve(self.matrix, self.kernel, mode = 'wrap')
 
-            [(row - 1) % self.n, col],            # up
-            [(row + 1) % self.n, col],            # down
-            [row, (col - 1) % self.m],            # left
-            [row, (col + 1) % self.m],            # right
-            
-            [(row - 1) % self.n, (col - 1) % self.m],  # upper left
-            [(row - 1) % self.n, (col + 1) % self.m],  # upper right
-            [(row + 1) % self.n, (col - 1) % self.m],  # lower left
-            [(row + 1) % self.n, (col + 1) % self.m]   # lower right
-        ])
-        
-        return self.matrix[indices[:, 0], indices[:, 1]]
-    
-    def parallel_count(self, processors = 4):
-        """
-        Count the neighbors of all cells with parallelization.
-
-        Parameters
-        ----------
-        processors: int
-            The number of processors to use. Default is 4.
-
-        Returns
-        -------
-        np.ndarray
-            The counts of the neighbors.
-        """
-        # Create all coordinates
-        coords = np.array([(i, j) for i in range(self.n) for j in range(self.m)])
-        
-        # Split coordinates into chunks: one per processor
-        coord_chunks = np.array_split(coords, processors)
-        
-        # Prepare arguments for each process
-        args = [(self.matrix, chunk, self.n, self.m) for chunk in coord_chunks]
-        
-        # Parallelization
-        with Pool(processors) as pool:
-
-            # Call the count for each chunk of coordinates
-            results = pool.map(self.count, args)
-        
-        # Combine them
-        return np.concatenate(results).reshape(self.n, self.m)
-
-    def count(self, args):
-        """
-        Count the neighbors in a chunk of coordinates.
-
-        Parameters
-        ----------
-        args: tuple
-            The arguments to be unpacked.
-
-        Returns
-        -------
-        np.ndarray
-            The counts of the neighbors.
-        """
-        # Unpack the arguments
-        matrix, coords, self.n, self.m = args
-
-        # Initialize the counts
-        counts = np.zeros(len(coords), dtype = int)
-        
-        # Loop over the coordinates: enumerate gives the index and the value
-        for i, (row, col) in enumerate(coords):
-
-            # Get the neighbors
-            neighbors = self.moore_neighbors(row, col)
-
-            # Count them
-            counts[i] = np.sum(neighbors)
-        
-        return counts
-    
-    def images(self, generations: int, processors: int, path: str = None,
-               shape: tuple = (6, 6), cmap: str = "Blues"):
+    def images(self, 
+               generations: int, 
+               path: str = None,
+               shape: tuple = (6, 6), 
+               cmap: str = "Blues"):
         """
         Generate images of the cellular automata.
 
@@ -176,8 +118,6 @@ class LifeLikeCA:
         ----------
         generations: int
             The number of generations to simulate.
-        processors: int
-            The number of processors to use.
         path: str
             The path to save the images. Default is None.
         shape: tuple
@@ -187,45 +127,48 @@ class LifeLikeCA:
         """
         # Create the path
         Path(path).mkdir(exist_ok = True)
-        
-        # Get the rules
-        birth, survive = self.get_rules()
 
         # Save the initial state
-        self.image(state = self.matrix, path = path + "0000.png",
-                   shape = shape, cmap = cmap)
+        self.image(state = self.matrix, 
+                   path = path + "0000.png",
+                   shape = shape, 
+                   cmap = cmap)
         
-        # Create an empty matrix
-        new_matrix = np.zeros_like(self.matrix, dtype = int)
+        # Pre-allocate matrix for reuse
+        new_matrix = np.zeros_like(self.matrix, dtype=int)
 
         # Loop over generations
         for m in range(generations):
 
-            # Get the neighbors
-            all_neighbours = self.parallel_count(processors)
+            # Neighbor counting
+            neighbor_counts = self.count_neighbors()
 
-            # Apply the rules
-            # 1. Birth
-            birth_mask = (self.matrix == 0) & np.isin(all_neighbours, birth)
+            # Rule application
+            birth_mask = (self.matrix == 0) & np.isin(neighbor_counts, self.birth_rule)
+            survive_mask = (self.matrix == 1) & np.isin(neighbor_counts, self.survive_rule)
 
-            # 2. Survival
-            survive_mask = (self.matrix == 1) & np.isin(all_neighbours, survive)
-
-            # Update the matrix
-            new_matrix[:] = np.where(birth_mask | survive_mask, 1, 0)
+            # Update matrix
+            new_matrix[:] = 0
+            new_matrix[birth_mask | survive_mask] = 1
             
-            # Update state
-            self.matrix = new_matrix.copy()
+            # Swap matrices for next iteration
+            self.matrix, new_matrix = new_matrix, self.matrix
 
             # Save the image
-            self.image(state = self.matrix, path = f"{path}{str(m+1).zfill(4)}.png",
-                       shape = shape, cmap = cmap)
+            self.image(state = self.matrix, 
+                       path = f"{path}{str(m+1).zfill(4)}.png",
+                       shape = shape, 
+                       cmap = cmap)
         
         # Print a message
         print(f"All images have been generated.\n")
 
-    def gif(self, path: str = None, name: str = "evolution", fps: int = 5,
-            display: bool = False, loop: int = 2):
+    def gif(self, 
+            path: str = None, 
+            name: str = "evolution", 
+            fps: int = 5,
+            display: bool = False, 
+            loop: int = 2):
         """
         Generate a GIF from the images.
 
@@ -255,9 +198,10 @@ class LifeLikeCA:
         # Create a list to save the images
         images = []
 
-        # Read images with progress bar
-        for f in tqdm(files, desc = "Reading images"):
-            images.append(imageio.imread(f))
+        # Read images
+        for file in files:
+            img = imageio.imread(file)
+            images.append(img)
     
         # Save GIF
         imageio.mimsave(f'{path}/{name}.gif', images,
@@ -317,4 +261,4 @@ class LifeLikeCA:
         """
         To print the rules of the cellular automata.
         """
-        return f"Born with {self.get_rules()[0]} and survive with {self.get_rules()[1]} neighbors. Otherwise, die."
+        return f"Born with {self.birth_rule} and survive with {self.survive_rule} neighbors."

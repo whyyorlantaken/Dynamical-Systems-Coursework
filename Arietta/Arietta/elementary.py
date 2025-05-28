@@ -1,10 +1,11 @@
 # Library
 import numpy as np
 
+# Class
 class ElementaryCA:
     """
     Given a rule as an integer, number of iterations and an initial
-    configuration, it returns the image produced by the evolution of the rule.
+    configuration, it returns the evolution of the rule.
 
     Parameters
     ----------
@@ -17,79 +18,94 @@ class ElementaryCA:
 
     Author: MAY.
     """
-    def __init__(self, rule: int, initial_config: np.ndarray):
+    def __init__(self, 
+                 rule: int,
+                 length: int, 
+                 ics: np.ndarray = None):
         
         # Attributes
         self.rule = rule
-        self.array = initial_config
 
-    # Obtain the table
-    def get_table(self):
+        # If no ics are provided
+        if ics is None:
+            self.array = np.zeros(length, dtype = int)
+            self.array[length // 2] = 1
+
+        else:
+            self.array = ics
+
+        self._rule_table = self._table()
+
+    def _table(self) -> np.ndarray:
         """
         Convert a decimal number to binary.
+
+        Returns
+        -------
+        np.ndarray
+            Array representing the rule in binary form.
         """
-        # Get the binary representation
-        binary = bin(self.rule)[2:]
+        # Binary representation
+        binary = bin(self.rule)[2:].zfill(8)
 
-        # And the 8-bit representation
-        binary = binary.zfill(8)
+        # Get the rule
+        rule = np.array([int(b) for b in binary])
 
-        # Now construct the table
-        the_rule = {(1,1,1): int(binary[0]),
-                    (1,1,0): int(binary[1]),
-                    (1,0,1): int(binary[2]),
-                    (1,0,0): int(binary[3]),
-                    (0,1,1): int(binary[4]),
-                    (0,1,0): int(binary[5]),
-                    (0,0,1): int(binary[6]),
-                    (0,0,0): int(binary[7])}
+        return rule
+    
+    def _update(self) -> np.ndarray:
+        """
+        Apply the rule to the current state.
 
-        return the_rule
+        Returns
+        -------
+        np.ndarray
+            The updated state of the cellular automaton.
+        """
+        # Length
+        length = len(self.array)
 
-    # For updating the array
-    def update_array(self):
-
-        # Get the lenght
-        lenght = len(self.array)
-
-        # Create a clean array
-        new_array = np.zeros(lenght)
-
-        # Loop over each element
-        for m in range(lenght):
-
-            # Get the left, center and right cells
-            left = self.array[(m - 1) % lenght]
-            center = self.array[m]
-            right = self.array[(m + 1) % lenght]
-
-            # Update the center cell
-            new_array[m] = self.get_table()[(left, center, right)]
+        # New array
+        new_array = np.zeros(length, dtype = int)
+        
+        # Periodic boundary conditions
+        left = np.roll(self.array, 1)
+        right = np.roll(self.array, -1)
+        
+        # Update array based on rule
+        indices = (left * 4 + self.array * 2 + right).astype(int)
+        new_array = self._rule_table[7 - indices]
         
         return new_array
                        
-    # Iterate
-    def get_evolution(self, iterations: int):
+    def evolution(self, 
+                  iterations: int,
+                  save: bool = False,
+                  name: str = None) -> np.ndarray:
+        """
+        Get the evolution of the cellular automaton.
 
-        # Store the iterations
-        self.iterations = iterations
+        Parameters
+        ----------
+        iterations : int
+            The number of iterations to perform.
 
-        # Create an empty list
-        image = []
+        Returns
+        -------
+        np.ndarray
+            An array containing the evolution of the cellular automaton.
+        """
+        # Initialize the image array
+        image = np.zeros((iterations + 1, len(self.array)), dtype = int)
+        image[0] = self.array
+        
+        # Update
+        for i in range(iterations):
+            self.array = self._update()
+            image[i + 1] = self.array
 
-        # Append the initial array
-        image.append(self.array)
+        # Save data if required
+        if save:
+            np.save(name, image)
 
-        # Loop for updating the state
-        for i in range(self.iterations):
-
-            # Get the next array
-            next_array = self.update_array()
-
-            # Store it
-            image.append(next_array)
-
-            # Reassing to continue
-            self.array = next_array
-
-        return np.array(image)
+        return image
