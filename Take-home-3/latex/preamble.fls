@@ -1,9 +1,9 @@
-PWD /home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex
+PWD /home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-3/latex
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-1/latex/preamble.tex
+INPUT /home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-3/latex/preamble.tex
 OUTPUT preamble.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls

@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1748534147.95782 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/preamble.tex" "preamble.pdf" "preamble" 1748534148.67179 2
+["pdflatex"] 1748534388.53914 "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-3/latex/preamble.tex" "preamble.pdf" "preamble" 1748534389.40806 2
   "/etc/texmf/web2c/texmf.cnf" 1719568115.92192 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-2/latex/preamble.tex" 1745029155.85407 2271 ff2396581b2740b09357aa7c5bf3c624 ""
+  "/home/whyyorlantaken/Documents/Yachay-Tech/Physics/Repositories/Dynamical-Systems-Coursework/Take-home-3/latex/preamble.tex" 1748534387.25012 2271 ff2396581b2740b09357aa7c5bf3c624 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -82,8 +82,8 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1722184945 6837770 486e408f2017caea10fb86946faf1558 ""
-  "preamble.aux" 1748534147.9557 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "preamble.tex" 1745029155.85407 2271 ff2396581b2740b09357aa7c5bf3c624 ""
+  "preamble.aux" 1748534388.53712 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "preamble.tex" 1748534387.25012 2271 ff2396581b2740b09357aa7c5bf3c624 ""
   (generated)
   "preamble.aux"
   "preamble.log"

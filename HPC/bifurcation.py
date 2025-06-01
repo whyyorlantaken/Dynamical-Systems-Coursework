@@ -11,20 +11,42 @@ import matplotlib.pyplot as plt
 #                     MAPS                     #
 ################################################
 
-# Sine map
 @jit(nopython=True)
 def sine_map(x, r):
     return np.sin(r * np.arcsin(np.sqrt(x))) ** 2
 
-# Hyperbolic tan map
 @jit(nopython=True)
 def tanh_map(x, r):
     return np.abs(np.tanh(1.3 * (x - r)))
 
-# Power map
 @jit(nopython=True)
 def power_map(x, r):
     return (1-r**(x * (1-x)))/(1-r**(1/4))
+
+@jit(nopython=True)
+def circle_map(x, r):
+    return (x + r - (1/(2 * np.pi)) * np.sin(2 * np.pi * x)) % 1.0
+
+@jit(nopython=True)
+def map_2d(state, b, a=1.5):
+    x, y = state
+    x_new = 1 - a * np.abs(x) + y
+    y_new = b * x
+    return x_new, y_new
+
+def two_map(x, r):
+    global y_state
+    if not hasattr(two_map, 'y_state'):
+        two_map.y_state = 0.0
+    
+    # Apply the 2D map
+    x_new, y_new = map_2d((x, two_map.y_state), r, a=1.5)
+    
+    # Update
+    two_map.y_state = y_new
+    
+    return x_new
+
 
 ################################################
 #                   FUNCTION                   #
@@ -83,9 +105,9 @@ def bifurcation(map: callable,
             x = map(x, r)
             
             # Map x to a row in the histogram
-            if x >= min_x and x <= max_x:
-                row = int((1 - x) * (height - 1))
-                hist[row, i] += 1
+            row = int((max_x - x) / (max_x - min_x) * (height - 1))
+            row = max(0, min(row, height - 1))
+            hist[row, i] += 1
 
     # End
     print("---------------------------------------------------")
@@ -106,16 +128,16 @@ def bifurcation(map: callable,
 if __name__ == "__main__":
 
     # Usage
-    # bifurcation(sine_map,
-    #             r_min = 1.0,
-    #             r_max = 4.0,
-    #             min_x = 0.0,
-    #             max_x = 1.0,
-    #             numtoplot = 10000,
-    #             transient = 2000,
-    #             initial_x = 0.5,
-    #             width = 10000,
-    #             height = 10000//3)
+    #hist, values = bifurcation(sine_map,
+    #            r_min = 1.0,
+    #            r_max = 4.0,
+    #            min_x = 0.0,
+    #            max_x = 1.0,
+    #            numtoplot = 250000,
+    #            transient = 2000,
+    #            initial_x = 0.5,
+    #            width = 2048,
+    #            height = int(2048*3))
     
     # hist, r_values = bifurcation(tanh_map,
     #                             r_min = 0.0,
@@ -145,49 +167,34 @@ if __name__ == "__main__":
     # plt.savefig("results/bifurcation_diagram5.pdf", dpi = 300)
     # plt.close()
 
-    # hist, r_values = bifurcation(power_map,
-    #                             r_min = 0.0,
-    #                             r_max = 1.0,
-    #                             min_x = 0.0,
-    #                             max_x = 1.0,
-    #                             numtoplot = 80000,
-    #                             transient = 2000,
-    #                             initial_x = 0.5,
-    #                             width = 3072,
-    #                             height = 3072)
+    hist, r_values = bifurcation(two_map,
+                                 r_min = -0.7,
+                                 r_max = +0.7,
+                                 min_x = -1.0,
+                                 max_x = +1.3,
+                                 numtoplot = 30000, #80000
+                                 transient = 2000,
+                                 initial_x = 0.5,
+                                 width = int(512*2),
+                                 height = 512)
     
-    # # Plot
-    # plt.figure(figsize = (7, 7))
-    # plt.imshow(np.log10(hist +1), 
-    #            extent = [0, 1, 0, 1],
-    #            aspect = "auto",
-    #            cmap = "Purples",
-    #            interpolation = "nearest")
-    
-    # # Labels
-    # plt.title("Bifurcation diagram of "+ r"$x_{n+1} = \frac{1 - b^{x_n(1-x_n)}}{1 - b^{1/4}}$", fontsize = 14)
-    # plt.xlabel("b", fontsize = 13)
-    # plt.ylabel(r"$x_n$", fontsize = 13)
-    # plt.tick_params(axis='both', labelsize=9)
-    # plt.tight_layout()
-    # plt.savefig("results/bifurcation_diagram6.pdf", dpi = 300)
-    # plt.close()
-
-    x_array = np.linspace(0, 1, 500)
-
-    # Feed the power map
-    y_array = power_map(x_array, 0.5)
-
     # Plot
-    plt.figure(figsize = (7, 7))
-    plt.plot(x_array, y_array, color = "purple", lw = 0.8)
-    plt.title("Power map", fontsize = 14)
-    plt.xlabel(r"$x_n$", fontsize = 13)
-    plt.ylabel(r"$f(x)$", fontsize = 13)
+    plt.figure(figsize = (7, 5))
+    plt.imshow(np.log(hist+1), 
+               extent = [-0.7, 0.7, -1, 1.3],
+               aspect = "auto",
+               cmap = "Reds",
+               interpolation = "nearest")
+    
+    # Labels
+    # plt.title("Bifurcation diagram of "+ r"$x_{n+1} = \sin^2(r\,\arcsin(\sqrt{x_n}))$", fontsize=14)
+	# plt.title("Bifurcation diagram of " + r"$x_{n+1}=\frac{1-b^{x_n(1-x_n)}}{1-b^{1/4}}$")
+    # plt.title("Bifurcation diagram of " + r"$x_{n+1} = x_n + \omega - \frac{1}{2\pi}\sin(2\pi x_n) \text{ mod } 1$", fontsize=14)
+    plt.title("Bifurcation diagram of " + r"$x_{n+1} = 1 - 1.5|x_n| + y_n, \, y_{n+1} = b x_n$", fontsize=14)
+    plt.xlabel(r"$b$", fontsize = 13)
+    plt.ylabel(r"$x_n$", fontsize = 13)
     plt.tick_params(axis='both', labelsize=9)
-    plt.xlim(-0.05, 1.05)
-    plt.ylim(-0.05, 1.05)
-    plt.grid()
     plt.tight_layout()
-    plt.show()
+    #plt.ylim(-0.1,1)
+    plt.savefig("results/TWO-MAP-REDS.pdf", dpi = 300)
     plt.close()
